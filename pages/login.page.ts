@@ -5,31 +5,31 @@ export class LoginPage {
   readonly usernameInput;
   readonly passwordInput;
   readonly loginButton;
-  readonly emailRadio;
-  readonly phoneRadio;
+  readonly emailLoginRadio;
+  readonly phoneLoginRadio;
+  readonly loginError;
 
   constructor(page: Page){
     this.page = page;
-    this.usernameInput = page.locator('#identifier');
-    this.passwordInput = page.locator('#password');
-    this.loginButton = page.locator('#submitBtn');
-    this.emailRadio = page.locator('#email-radio');
-    this.phoneRadio = page.locator('#contact-radio');
+    this.usernameInput = page.getByTestId('login-identifier');
+    this.passwordInput = page.getByTestId('login-password');
+    this.loginButton = page.getByRole('button', { name: "Submit" });
+    this.emailLoginRadio = page.getByRole('radio', { name: 'Email' });
+    this.phoneLoginRadio = page.getByRole('radio', { name: 'Phone No.' });
+    this.loginError = page.getByTestId('login-fail-error');
   }
 
   async goto() {
-    await this.page.goto('http://localhost:3000/api/auth/login');
+    await this.page.goto('/api/auth/login');
   }
 
-  async login(username: string, password: string) {
-    await this.usernameInput.fill(username);
-    await this.passwordInput.fill(password);
-    await this.loginButton.click();
+  async selectRadio(rad:string) {
+    rad === 'email' && await this.emailLoginRadio.click();
+    rad === 'phone' && await this.phoneLoginRadio.click();
   }
 
-  async phoneLogin(phone: string, password: string) {
-    await this.phoneRadio.click();
-    await this.usernameInput.fill(phone);
+  async signInUser(identifier: string, password: string) {
+    await this.usernameInput.fill(identifier);
     await this.passwordInput.fill(password);
     await this.loginButton.click();
   }
