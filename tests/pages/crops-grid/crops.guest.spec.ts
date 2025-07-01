@@ -1,6 +1,6 @@
 import test, { expect } from "@playwright/test";
-import { CropsGridPage } from "../../pages/crops.page";
-import isAlphabeticAtoZ from "../../utils/sorts";
+import { CropsGridPage } from "../../../pages/crops.page";
+import isAlphabeticAtoZ from "../../../utils/sorts";
 
 test('track crop as guest', async ({ page }) => {
   const grid = new CropsGridPage(page);

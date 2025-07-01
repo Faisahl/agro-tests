@@ -1,0 +1,55 @@
+{
+  "cookies": [
+    {
+      "name": "market",
+      "value": "Karachi",
+      "domain": "127.0.0.1",
+      "path": "/",
+      "expires": 1752002223.376457,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "lang",
+      "value": "en",
+      "domain": "127.0.0.1",
+      "path": "/",
+      "expires": 1752002223.376606,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "test_cookie",
+      "value": "CheckForPermission",
+      "domain": ".doubleclick.net",
+      "path": "/",
+      "expires": 1751398324.549111,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "strapi_jwt",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjcsInJvbGUiOiJBdXRob3IiLCJkb2N1bWVudElkIjoibXE4dHluYnJlY2hpMTNmeXptZ3lsYm9hIiwiaWF0IjoxNzUxMzk3NDI0LCJleHAiOjE3NTM5ODk0MjR9._28S9fqITAxluUtxzHqb0nz5P6dPj6rJ7AItgX8o5uQ",
+      "domain": "127.0.0.1",
+      "path": "/",
+      "expires": 1751411824.894364,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Strict"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://www.google.com",
+      "localStorage": [
+        {
+          "name": "rc::h",
+          "value": "1751397424926"
+        }
+      ]
+    }
+  ]
+}

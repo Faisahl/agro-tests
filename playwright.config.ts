@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import path from 'path';
 
 /**
  * Read environment variables from file.
@@ -7,12 +8,12 @@ import { defineConfig, devices } from '@playwright/test';
 // import dotenv from 'dotenv';
 // import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
-
+const authFile = path.join(__dirname, '../testing/pwt/.auth/user.json');
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './tests/pages',
+  testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -34,6 +35,30 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    {
+      name: 'setup-auth',
+      testMatch: /.*\.setup\.ts/,
+    },
+    {
+      name: 'guest',
+      testMatch: /.*\.guest\.spec\.ts/,
+    },
+    {
+      name: 'auth',
+      testMatch: /.*\.auth\.spec\.ts|.*\.teardown\.ts/,
+      dependencies: ['setup-auth'],
+      use: {
+        storageState: authFile
+      }
+    },
+    // {
+    //   name: 'admin',
+    //   testMatch: /.*\.admin\.spec\.ts/,
+    //   dependencies: ['setup-admin'],
+    //   use: {
+    //     storageState: 'adminState.json'
+    //   }
+    // },
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },

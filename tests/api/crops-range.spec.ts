@@ -3,7 +3,6 @@ import { Crop } from "../../types/Crop";
 const agro_key = 'Sb0TGzuIpB1QKwphRlW6SEncP1N9Qio8qkGwrQsdohDadaEOMSVue8mgvzzGwPMa6utkf7PjsNaSyvVGcaWLXWbM7u8ep24BVkgYR29sTT3jSB9mPabiqX9YgAVQhlK0';
 
 test('GET crop range', async () => {
-  // const baseUrl = 'http://localhost:1337/';
   const docId = 'omi72trf5shaidwdiq6t0e2w';
   const limit = 14;
   const location = 'karachi';
