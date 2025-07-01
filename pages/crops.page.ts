@@ -1,28 +1,36 @@
 import { Page } from "@playwright/test";
 
 export class CropsGridPage {
-  readonly page: Page;
-  readonly cropCard;
-  readonly loginModal;
-  readonly filtertoggle;
-  readonly sortSelect;
-  readonly minRateFilter;
-  readonly categorySelect;
+  constructor(public readonly page: Page) {}
 
-  constructor(page: Page){
-    this.page = page;
-    this.cropCard = page.getByTestId('crop-card');
-    this.filtertoggle = page.getByRole('button', { name: 'filters-toggle' });
-    this.loginModal = page.getByTestId('login-popup');
-    this.sortSelect = page.getByRole('combobox', { name: 'sortselect' });
-    this.minRateFilter = page.getByRole('textbox', { name: 'Minimum Rs.' });
-    this.categorySelect = page.getByRole('combobox', { name: 'sortCat' })
+  get cropCard() {
+    return this.page.getByTestId('crop-card');
   }
 
-  async goto(market:string) {
+  get loginModal() {
+    return this.page.getByTestId('login-popup');
+  }
+
+  get filterToggle() {
+    return this.page.getByRole('button', { name: 'filters-toggle' });
+  }
+
+  get sortSelect() {
+    return this.page.getByRole('combobox', { name: 'sortselect' });
+  }
+
+  get minRateFilter() {
+    return this.page.getByRole('textbox', { name: 'Minimum Rs.' });
+  }
+
+  get categorySelect() {
+    return this.page.getByRole('combobox', { name: 'sortCat' });
+  }
+
+  async goto(market: string) {
     await this.page.goto(`/api/crops?market=${market}`);
   }
-  
+
   async getCropNames() {
     return await this.cropCard.locator('h3[aria-label="crop-card-name"]').allInnerTexts();
   }
@@ -35,21 +43,17 @@ export class CropsGridPage {
     return await this.cropCard.getByTestId('crop-category-type').allInnerTexts();
   }
 
-  async trackCrop(selected:number) {
-    const card = this.cropCard.nth(selected);
-    await card.getByRole('button', { name: 'track-crop' }).click();
+  async trackCrop(selected: number) {
+    await this.cropCard.nth(selected).getByRole('button', { name: 'track-crop' }).click();
   }
 
-  async selectCropSort(sort:string) {
+  async selectCropSort(sort: string) {
     await this.sortSelect.selectOption(sort);
-    const crops = await this.cropCard.locator('h3[aria-label="crop-card-name"]').allInnerTexts();
-    return crops;    
+    return this.getCropNames();
   }
 
-  async filterByCategory(cat:string) {
+  async filterByCategory(cat: string) {
     await this.categorySelect.selectOption(cat);
-    const categories = await this.page.getByTestId('crop-category-type').allInnerTexts();
-    return categories;
+    return await this.getCropBadges();
   }
-
 }

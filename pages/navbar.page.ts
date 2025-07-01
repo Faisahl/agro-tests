@@ -67,7 +67,11 @@ export class NavBar {
   get logoutBtn() {
     return this.page.getByTestId("logout-button");
   }
-
+  
+  get loginBtn() {
+    return this.page.getByRole("link", { name: "Sign In" });
+  }
+  
   async logout() {
     const ui = this.userIconBtn;
     await ui.click();
@@ -75,7 +79,4 @@ export class NavBar {
     await this.logoutBtn.click();
   }
 
-  async loginBtn() {
-    return this.page.getByRole("link", { name: "Sign In" });
-  }
 }

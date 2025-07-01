@@ -14,7 +14,7 @@ test('track crop as guest', async ({ page }) => {
 test('sort crops alphabetically', async ({ page }) => {
   const grid: CropsGridPage = new CropsGridPage(page);
   await grid.goto('karachi');
-  await grid.filtertoggle.click();
+  await grid.filterToggle.click();
 
   const crops = await grid.getCropNames();
   const names = await grid.selectCropSort('AtoZ');
@@ -31,7 +31,7 @@ test('filter crops by min price', async ({ page }) => {
   
   const grid = new CropsGridPage(page);
   await grid.goto('karachi');
-  await grid.filtertoggle.click();
+  await grid.filterToggle.click();
 
   const beforeCount = (await grid.getCropRates()).length;
   await grid.minRateFilter.fill(test.toString());
@@ -51,7 +51,7 @@ test('filter crops by min price', async ({ page }) => {
 test('filter crops by category', async ({ page }) => {
   const grid = new CropsGridPage(page);
   await grid.goto('karachi');
-  await grid.filtertoggle.click();
+  await grid.filterToggle.click();
 
   const types = await grid.getCropBadges();
   

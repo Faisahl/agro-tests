@@ -1,14 +1,14 @@
 import test, { expect } from "@playwright/test";
-import { HomePage } from "../../../pages/home.page";
 import { LoginPage } from "../../../pages/login.page";
+import { NavBar } from "../../../pages/navbar.page";
 
 test('valid user login by email', async ({ page }) => {
   const signin = new LoginPage(page);
   await signin.goto();
   await signin.signInUser('admin@kashtdar.com','d8T2[W0[4c-a');
   await expect(page).toHaveURL('/');
-  const home = new HomePage(page);
-  await expect(home.userIcon).toBeVisible();
+  const nav = new NavBar(page);
+  await expect(nav.userIconBtn).toBeVisible();
 });
 
 test('invalid user login by email', async ({ page }) => {
@@ -24,8 +24,8 @@ test('valid user login by phone no.', async ({ page }) => {
   await signin.selectRadio('phone');
   await signin.signInUser('3132134132','d8T2[W0[4c-a');
   await expect(page).toHaveURL('/');
-  const home = new HomePage(page);
-  await expect(home.userIcon).toBeVisible();
+  const nav = new NavBar(page);
+  await expect(nav.userIconBtn).toBeVisible();
 });
 
 test('invalid user login by phone no.', async ({ page }) => {
