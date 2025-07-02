@@ -56,4 +56,16 @@ export class CropsGridPage {
     await this.categorySelect.selectOption(cat);
     return await this.getCropBadges();
   }
+
+  trackBtn(num:number) {
+    return this.cropCard.nth(num).getByRole('button', { name: 'track-crop' })
+  }
+
+  checkTracked(num:number) {
+    return this.cropCard.nth(num).getByTestId('crop-tracked');
+  }
+
+  getCropNameLink(num:number) {
+    return this.cropCard.nth(num).locator('h3[aria-label="crop-card-name"]');
+  }
 }

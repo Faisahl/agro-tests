@@ -5,7 +5,7 @@
       "value": "Karachi",
       "domain": "127.0.0.1",
       "path": "/",
-      "expires": 1752002223.376457,
+      "expires": 1752005871.812389,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
@@ -15,7 +15,7 @@
       "value": "en",
       "domain": "127.0.0.1",
       "path": "/",
-      "expires": 1752002223.376606,
+      "expires": 1752005871.812529,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
@@ -25,17 +25,17 @@
       "value": "CheckForPermission",
       "domain": ".doubleclick.net",
       "path": "/",
-      "expires": 1751398324.549111,
+      "expires": 1751401972.920125,
       "httpOnly": true,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "strapi_jwt",
-      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjcsInJvbGUiOiJBdXRob3IiLCJkb2N1bWVudElkIjoibXE4dHluYnJlY2hpMTNmeXptZ3lsYm9hIiwiaWF0IjoxNzUxMzk3NDI0LCJleHAiOjE3NTM5ODk0MjR9._28S9fqITAxluUtxzHqb0nz5P6dPj6rJ7AItgX8o5uQ",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjcsInJvbGUiOiJBdXRob3IiLCJkb2N1bWVudElkIjoibXE4dHluYnJlY2hpMTNmeXptZ3lsYm9hIiwiaWF0IjoxNzUxNDAxMDczLCJleHAiOjE3NTM5OTMwNzN9.WWHKm2wmVuFjQb7rqYasNR070jK_aleAKqfNYayi7U0",
       "domain": "127.0.0.1",
       "path": "/",
-      "expires": 1751411824.894364,
+      "expires": 1751415473.4905,
       "httpOnly": true,
       "secure": false,
       "sameSite": "Strict"
@@ -47,7 +47,7 @@
       "localStorage": [
         {
           "name": "rc::h",
-          "value": "1751397424926"
+          "value": "1751401073206"
         }
       ]
     }

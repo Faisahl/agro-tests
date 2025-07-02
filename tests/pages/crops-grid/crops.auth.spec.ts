@@ -2,9 +2,14 @@ import test, { expect } from "@playwright/test";
 import { CropsGridPage } from "../../../pages/crops.page";
 
 test("track crop as user", async ({ page }) => {
+  const sel = 4;
   const grid = new CropsGridPage(page);
   await grid.goto("karachi");
-
-  await grid.trackCrop(4);
-  await expect(grid.loginModal).toBeVisible();
+  await expect(grid.trackBtn(sel)).toBeVisible();
+  await grid.trackCrop(sel);
+  await expect(grid.checkTracked(sel)).toBeVisible();
 });
+
+test("track crop as user", async ({ page }) => {
+  
+})

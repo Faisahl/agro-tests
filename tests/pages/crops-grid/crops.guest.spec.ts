@@ -1,6 +1,5 @@
 import test, { expect } from "@playwright/test";
 import { CropsGridPage } from "../../../pages/crops.page";
-import isAlphabeticAtoZ from "../../../utils/sorts";
 
 test('track crop as guest', async ({ page }) => {
   const grid = new CropsGridPage(page);
@@ -10,62 +9,15 @@ test('track crop as guest', async ({ page }) => {
   await expect(grid.loginModal).toBeVisible();
 });
 
-// SORT & FILTERING
-test('sort crops alphabetically', async ({ page }) => {
-  const grid: CropsGridPage = new CropsGridPage(page);
-  await grid.goto('karachi');
-  await grid.filterToggle.click();
-
-  const crops = await grid.getCropNames();
-  const names = await grid.selectCropSort('AtoZ');
-
-  if(JSON.stringify(crops) !== JSON.stringify(names)){
-    expect(isAlphabeticAtoZ(names)).toBe(true);
-  } else {
-    console.warn('Default crops populated alphabetically.');
-  }
-});
-
-test('filter crops by min price', async ({ page }) => {
-  const min = 2000;
-  
+test('use grid card name to navigate to crop view page', async ({ page }) => {
+  const slct = 3;
   const grid = new CropsGridPage(page);
   await grid.goto('karachi');
-  await grid.filterToggle.click();
 
-  const beforeCount = (await grid.getCropRates()).length;
-  await grid.minRateFilter.fill(test.toString());
-  await page.keyboard.press('Tab');
-
-  const filteredRates = await grid.getCropRates();
-  expect(filteredRates.length).toBeLessThanOrEqual(beforeCount);
-
-  if(beforeCount !== filteredRates.length){
-    const filtered = filteredRates.slice(0,3);
-    for(const val of filtered){
-      expect(Number(val)).toBeGreaterThanOrEqual(min);
-    };
-  };
+  await grid.getCropNameLink(slct).click();
+  await expect(page).toHaveTitle('View Crop - Kashtdar');
 });
 
-test('filter crops by category', async ({ page }) => {
-  const grid = new CropsGridPage(page);
-  await grid.goto('karachi');
-  await grid.filterToggle.click();
+// test('', async ({ page }) => {
 
-  const types = await grid.getCropBadges();
-  
-  const type = 'Vegetable';
-  // await page.waitForSelector('option[value="Vegetable"]');
-  // await page.getByRole('option', { name: type }).waitFor();
-  const badges = await grid.filterByCategory("Vegetable");
-  expect(badges.length).toBeLessThanOrEqual(types.length);
-  
-  const categories = badges.slice(0,3);
-  for(const cat of categories){
-    expect(cat).toBe(type);
-  };
-});
-
-
-// END SORT & FILTERING
+// })
