@@ -15,4 +15,6 @@ export class UserProfilePage {
     return this.page.getByRole('option', { name: 'users-crops' }).allInnerTexts();
   }
 
+  
+
 }

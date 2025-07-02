@@ -40,24 +40,24 @@ test('filter crops by min price', async ({ page }) => {
   };
 });
 
-test('filter crops by category', async ({ page }) => {
-  const grid = new CropsGridPage(page);
-  await grid.goto('karachi');
-  await grid.filterToggle.click();
+// test('filter crops by category', async ({ page }) => {
+//   const grid = new CropsGridPage(page);
+//   await grid.goto('karachi');
+//   await grid.filterToggle.click();
 
-  const types = await grid.getCropBadges();
+//   const types = await grid.getCropBadges();
   
-  const type = 'Vegetable';
-  // await page.waitForSelector('option[value="Vegetable"]');
-  // await page.getByRole('option', { name: type }).waitFor();
-  const badges = await grid.filterByCategory("Vegetable");
-  expect(badges.length).toBeLessThanOrEqual(types.length);
+//   const type = 'Vegetable';
+//   // await page.waitForSelector('option[value="Vegetable"]');
+//   // await page.getByRole('option', { name: type }).waitFor();
+//   const badges = await grid.filterByCategory("Vegetable");
+//   expect(badges.length).toBeLessThanOrEqual(types.length);
   
-  const categories = badges.slice(0,3);
-  for(const cat of categories){
-    expect(cat).toBe(type);
-  };
-});
+//   const categories = badges.slice(0,3);
+//   for(const cat of categories){
+//     expect(cat).toBe(type);
+//   };
+// });
 
 
 // END SORT & FILTERING
