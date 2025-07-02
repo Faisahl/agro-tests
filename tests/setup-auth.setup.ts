@@ -3,7 +3,7 @@ import { LoginPage } from "../pages/login.page";
 import { HomePage } from "../pages/home.page";
 import path from "path";
 
-const authFile = path.join(__dirname, '../testing/pwt/.auth/user.json');
+const authFile = path.join(__dirname, '../pwt/.auth/user.json');
 
 setup('authenticate', async ({ page }) => {
     const signin = new LoginPage(page);

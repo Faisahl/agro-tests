@@ -8,3 +8,5 @@ node_modules/
 /testing/pwt/
 /pwt/
 /testing/screenshots/
+
+/*.env
