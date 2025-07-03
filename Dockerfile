@@ -6,7 +6,7 @@ WORKDIR /tests
 
 # Copy package.json and package-lock.json from the host to the container's working directory
 COPY package.json package-lock.json ./
-COPY .env ./
+# COPY .env ./
 
 # Install Node.js dependencies using npm ci (clean install)
 RUN npm ci
