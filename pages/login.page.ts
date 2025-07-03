@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-
+const baseUrl:string = process.env.TEST_URL || 'http://127.0.0.1:3000';
 export class LoginPage {
   readonly page: Page;
   readonly usernameInput;
@@ -20,7 +20,7 @@ export class LoginPage {
   }
 
   async goto() {
-    await this.page.goto(`${process.env.TEST_URL || 'http://127.0.0.1:3000'}/api/auth/login`);
+    await this.page.goto(`${baseUrl}/api/auth/login`);
   }
 
   async selectRadio(rad:string) {

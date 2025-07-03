@@ -1,5 +1,7 @@
 import { Page } from "@playwright/test";
 
+const baseUrl:string = process.env.TEST_URL || 'http://127.0.0.1:3000';
+
 export class CropsGridPage {
   constructor(public readonly page: Page) {}
 
@@ -28,7 +30,7 @@ export class CropsGridPage {
   }
 
   async goto(market: string) {
-    await this.page.goto(`${process.env.TEST_URL || 'http://127.0.0.1:3000'}/api/crops?market=${market}`);
+    await this.page.goto(`${baseUrl}/api/crops?market=${market}`);
   }
 
   async getCropNames() {

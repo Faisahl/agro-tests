@@ -2,7 +2,7 @@ import test, { expect } from "@playwright/test";
 import { CropViewPage } from "../../../pages/crop-view.page";
 
 const cid = 'omi72trf5shaidwdiq6t0e2w';
-
+console.log('Using TEST_URL:', process.env.TEST_URL);
 test('verify chart is populated - tcg-01', async ({ page }) => {
   const cv = new CropViewPage(page);
   await cv.goto(cid);

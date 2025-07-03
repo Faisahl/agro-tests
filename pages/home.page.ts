@@ -1,5 +1,7 @@
 import { Page } from "@playwright/test";
 
+const baseUrl:string = process.env.TEST_URL || 'http://127.0.0.1:3000';
+
 export class HomePage {
   readonly page: Page;
   readonly signInBtn;
@@ -12,7 +14,7 @@ export class HomePage {
   }
 
   async goto() {
-    await this.page.goto(`${process.env.TEST_URL || 'http://127.0.0.1:3000'}`);
+    await this.page.goto(`${baseUrl}`);
   }
 
   async gotoLogin() {
