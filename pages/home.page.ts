@@ -12,7 +12,7 @@ export class HomePage {
   }
 
   async goto() {
-    await this.page.goto('/');
+    await this.page.goto(`${process.env.TEST_URL || 'http://127.0.0.1:3000'}`);
   }
 
   async gotoLogin() {

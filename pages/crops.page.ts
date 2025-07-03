@@ -28,7 +28,7 @@ export class CropsGridPage {
   }
 
   async goto(market: string) {
-    await this.page.goto(`/api/crops?market=${market}`);
+    await this.page.goto(`${process.env.TEST_URL || 'http://127.0.0.1:3000'}/api/crops?market=${market}`);
   }
 
   async getCropNames() {

@@ -4,7 +4,7 @@ export class UserProfilePage {
   constructor(public readonly page: Page) {}
 
   async goto() {
-    await this.page.goto('/api/user/dashboard/profile');
+    await this.page.goto(`${process.env.TEST_URL || 'http://127.0.0.1:3000'}/api/user/dashboard/profile`);
   }
 
   get username(): Locator {

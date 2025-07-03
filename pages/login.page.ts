@@ -20,7 +20,7 @@ export class LoginPage {
   }
 
   async goto() {
-    await this.page.goto('/api/auth/login');
+    await this.page.goto(`${process.env.TEST_URL || 'http://127.0.0.1:3000'}/api/auth/login`);
   }
 
   async selectRadio(rad:string) {
