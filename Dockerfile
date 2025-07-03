@@ -9,7 +9,7 @@ COPY package.json package-lock.json ./
 # COPY .env ./
 
 # Install Node.js dependencies using npm ci (clean install)
-RUN npm ci
+RUN npm ci --include=dev
 
 # Copy the application code from the host to the container's working directory
 COPY . .
