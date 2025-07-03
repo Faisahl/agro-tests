@@ -5,7 +5,7 @@ FROM mcr.microsoft.com/playwright:v1.53.0-noble
 WORKDIR /tests
 
 # Copy package.json and package-lock.json from the host to the container's working directory
-COPY package.json package-lock.json ./
+# COPY package.json package-lock.json ./
 # COPY .env ./
 
 # Install Node.js dependencies using npm ci (clean install)
@@ -15,4 +15,4 @@ RUN npm ci --include=dev
 COPY . .
 
 # Install Chrome browser for use with Playwright
-RUN npx playwright install chrome
+RUN npx playwright install
