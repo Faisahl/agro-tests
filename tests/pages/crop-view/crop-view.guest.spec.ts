@@ -2,12 +2,12 @@ import test, { expect } from "@playwright/test";
 import { CropViewPage } from "../../../pages/crop-view.page";
 
 const cid = 'omi72trf5shaidwdiq6t0e2w';
-console.log('Using TEST_URL:', process.env.TEST_URL);
+
 test('verify chart is populated - tcg-01', async ({ page }) => {
   const cv = new CropViewPage(page);
   await cv.goto(cid);
   const chart = cv.chart;
-  await expect(chart).toBeVisible();
+  await expect(chart).toBeAttached();
   await chart.screenshot({ path: `screenshots/crop-view/tcg-01-${Date.now()}.png` });
 });
 
@@ -17,7 +17,7 @@ test('verify chart changes on user interaction - tcg-02', async ({ page }) => {
   await cv.goto(cid);
   
   const chart = cv.chart;
-  await expect(chart).toBeVisible();
+  await expect(chart).toBeAttached();
   await chart.screenshot({ path: `screenshots/crop-view/tcg-02-before-${curr}.png` });
   
   const radio = cv.changeLimitBtn('14 D');

@@ -2,8 +2,9 @@ import test, { expect, request } from "@playwright/test";
 import { UserProfilePage } from "../../../pages/user-profile.page";
 import { User } from "../../../types/User";
 import useToken from "../../../utils/useToken";
+import dotenv from 'dotenv'
 
-const agro_key = 'Sb0TGzuIpB1QKwphRlW6SEncP1N9Qio8qkGwrQsdohDadaEOMSVue8mgvzzGwPMa6utkf7PjsNaSyvVGcaWLXWbM7u8ep24BVkgYR29sTT3jSB9mPabiqX9YgAVQhlK0';
+dotenv.config();
 let user: User;
 
 test.beforeAll(async () => {
@@ -12,7 +13,7 @@ test.beforeAll(async () => {
     baseURL: 'http://localhost:1337',
     extraHTTPHeaders: {
       'Authorization': `Bearer ${token}`,
-      'agro-api-key': process.env.BACKEND_KEY || agro_key,
+      'agro-api-key': process.env.AGRO_KEY!,
     }
   });
   const response = await context.get('/api/users/me');
