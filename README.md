@@ -11,3 +11,4 @@ This repository contains the end-to-end test automation framework for **Kashtdar
 - **Page Object Model (POM)** – For reusable and modular test logic
 - **Playwright Test Runner** – Built-in support for parallel testing, reporting, retries
 - **Dotenv** – For environment-specific variables
+- **Docker Compose** – For dockerized test environment, used for CI/CD
