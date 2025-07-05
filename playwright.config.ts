@@ -1,13 +1,12 @@
-import { defineConfig, devices } from '@playwright/test';
-import dotenv from 'dotenv'
-import path from 'path';
-
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// import dotenv from 'dotenv';
-// import path from 'path';
+import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv'
+import path from 'path';
+
+
 dotenv.config({ path: path.resolve(__dirname, '.env') });
 const authFile = path.join(__dirname, '../testing/pwt/.auth/user.json');
 /**
@@ -29,6 +28,9 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: process.env.TEST_URL || 'http://127.0.0.1:3000',
+    extraHTTPHeaders: {
+      'agro-api-key': process.env.AGRO_KEY!
+    },
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -65,15 +67,15 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     /* Test against mobile viewports. */
     // {

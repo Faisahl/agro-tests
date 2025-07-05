@@ -14,4 +14,4 @@ RUN npm ci --include=dev
 COPY . .
 
 # Install Chrome browser for use with Playwright
-RUN npx playwright install
+RUN npx playwright install chromium
