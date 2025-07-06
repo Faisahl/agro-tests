@@ -26,7 +26,7 @@ test.describe("GET crops", () => {
   test("tca_01 - GET home page crops", async () => {
     const context = await request.newContext({
       extraHTTPHeaders: {
-        'agro-api-key': process.env.AGRO_KEY!,
+        'agro-api-key': `${process.env.AGRO_KEY!}`,
       }
     });
 
