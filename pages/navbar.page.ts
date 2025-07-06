@@ -1,11 +1,7 @@
 import { expect, Page } from "@playwright/test";
 
 export class NavBar {
-  readonly page: Page;
-
-  constructor(page: Page) {
-    this.page = page;
-  }
+  constructor(public readonly page: Page) {} 
 
   // NAV BUTTONS
   get homeBtn() {

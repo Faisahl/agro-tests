@@ -70,4 +70,9 @@ export class CropsGridPage {
   getCropNameLink(num:number) {
     return this.cropCard.nth(num).locator('h3[aria-label="crop-card-name"]');
   }
+
+  getCropCardName(num:number) {
+    const card = this.page.getByTestId('crop-card').nth(num);
+    return card.locator('h3[aria-label="crop-card-name"]').innerText();
+  }
 }
