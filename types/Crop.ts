@@ -12,6 +12,10 @@ export type Crop = {
   crop_categories: CropCategory[];
 }
 
+export type CropRes = {
+  data: Crop[]
+}
+
 export type CropPrice = {
   price_date: string;
   daily_price: number;
