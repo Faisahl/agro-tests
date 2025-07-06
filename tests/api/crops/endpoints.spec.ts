@@ -40,7 +40,7 @@ test.describe("GET crops", () => {
     const pageNum: number = 1;
     const context = await request.newContext({
       extraHTTPHeaders: {
-        'agro-api-key': process.env.AGRO_KEY!,
+        'agro-api-key': `${process.env.AGRO_KEY!}`,
       }
     });
 
@@ -57,7 +57,7 @@ test.describe("GET crops", () => {
   test('tca_03 - GET single crop (dcp desc)', async () => {
     const context = await request.newContext({
       extraHTTPHeaders: {
-        'agro-api-key': process.env.AGRO_KEY!,
+        'agro-api-key': `${process.env.AGRO_KEY!}`,
       }
     });
     
@@ -74,7 +74,7 @@ test.describe("GET crops", () => {
     const topX = 5;
     const context = await request.newContext({
       extraHTTPHeaders: {
-        'agro-api-key': process.env.AGRO_KEY!,
+        'agro-api-key': `${process.env.AGRO_KEY!}`,
       }
     });
 
@@ -90,7 +90,7 @@ test.describe("GET crops", () => {
 
     const context = await request.newContext({
       extraHTTPHeaders: {
-        'agro-api-key': process.env.AGRO_KEY!,
+        'agro-api-key': `${process.env.AGRO_KEY!}`,
       }
     });
 
