@@ -1,7 +1,10 @@
 import {test as should} from "@playwright/test";
 import { test, expect } from "../../../fixtures/e2e/goto-login";
+import { config } from "dotenv";
 // import { LoginPage } from "../../../pages/login.page";
 // import { NavBar } from "../../../pages/navbar.page";
+
+config();
 
 const testUserEmail = process.env.AGRO_USER!;
 const testPass = process.env.AGRO_USER_PASS!;
