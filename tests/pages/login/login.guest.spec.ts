@@ -1,37 +1,44 @@
-import test, { expect } from "@playwright/test";
-import { LoginPage } from "../../../pages/login.page";
-import { NavBar } from "../../../pages/navbar.page";
+import {test as should} from "@playwright/test";
+import { test, expect } from "../../../fixtures/e2e/goto-login";
+// import { LoginPage } from "../../../pages/login.page";
+// import { NavBar } from "../../../pages/navbar.page";
 
-test('valid user login by email', async ({ page }) => {
-  const signin = new LoginPage(page);
-  await signin.goto();
-  await signin.signInUser('admin@kashtdar.com','d8T2[W0[4c-a');
-  await expect(page).toHaveURL('/');
-  const nav = new NavBar(page);
-  await expect(nav.userIconBtn).toBeVisible();
+const testUserEmail = process.env.AGRO_USER!;
+const testPass = process.env.AGRO_USER_PASS!;
+const testUserPhone = process.env.AGRO_USER_PHONE!;
+
+should.describe('@smoke - valid/invalid user sign in', () => {
+  test('tc_01 - login user with valid email credential', async ({ loginPage, page, navBar }) => {
+    // const signin = new LoginPage(page);
+    // await signin.goto();
+    // const nav = new NavBar(page);
+    await loginPage.signInUser(`${testUserEmail}`,testPass);
+    await expect(page).toHaveURL('/');
+    await expect(navBar.userIconBtn).toBeVisible();
+  });
+
+  test('tc_02 - login user with valid phone credential', async ({ loginPage, page, navBar }) => {
+    // const signin = new LoginPage(page);
+    // await signin.goto();
+    // const nav = new NavBar(page);
+    await loginPage.selectRadio('phone');
+    await loginPage.signInUser(`${testUserPhone}`,testPass);
+    await expect(page).toHaveURL('/');
+    await expect(navBar.userIconBtn).toBeVisible();
+  });
+
+  test('tc_03 - show invalid email login error (wrong password)', async ({ loginPage, page, navBar }) => {
+    // const signin = new LoginPage(page);
+    // await signin.goto();
+    await loginPage.signInUser(`${testUserEmail}`,'wrongpass');
+    await expect(loginPage.loginError).toBeVisible();
+  });
 });
 
-test('invalid user login by email', async ({ page }) => {
-  const signin = new LoginPage(page);
-  await signin.goto();
-  await signin.signInUser('admin@krashtkar.com','d8T2[W0[4c-a');
-  await expect(signin.loginError).toBeVisible();
-});
-
-test('valid user login by phone no.', async ({ page }) => {
-  const signin = new LoginPage(page);
-  await signin.goto();
-  await signin.selectRadio('phone');
-  await signin.signInUser('3132134132','d8T2[W0[4c-a');
-  await expect(page).toHaveURL('/');
-  const nav = new NavBar(page);
-  await expect(nav.userIconBtn).toBeVisible();
-});
-
-test('invalid user login by phone no.', async ({ page }) => {
-  const signin = new LoginPage(page);
-  await signin.goto();
-  await signin.selectRadio('phone');
-  await signin.signInUser('3132134134','d8T2[W0[4c-a');
-  await expect(signin.loginError).toBeVisible();
+test('tc_04 - show invalid phone login error (wrong phone)', async ({ loginPage, page, navBar }) => {
+  // const signin = new LoginPage(page);
+  // await signin.goto();
+  await loginPage.selectRadio('phone');
+  await loginPage.signInUser('000010000',testPass);
+  await expect(loginPage.loginError).toBeVisible();
 });
