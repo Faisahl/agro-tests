@@ -1,7 +1,7 @@
 import test, { expect } from "@playwright/test";
 import { CropsGridPage } from "../../../pages/crops.page";
 
-test("track crop as user", async ({ page }) => {
+test("@smoke track crop as user", async ({ page }) => {
   const sel = 4;
   const grid = new CropsGridPage(page);
   await grid.goto("karachi");

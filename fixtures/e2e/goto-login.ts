@@ -12,7 +12,7 @@ export const test = base.extend<LoginFixtures>({
     await page.goto('/');
     const nav = new NavBar(page);
     const signin = new LoginPage(page);
-    await nav.loginBtn.click();
+    await nav.signInBtn.click();
 
     await use(signin);
   },

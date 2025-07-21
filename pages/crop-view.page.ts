@@ -11,6 +11,10 @@ export class CropViewPage {
     return this.page.getByTestId('rates-chart');
   }
 
+  get recentTrendList() {
+    return this.page.getByLabel('trend-list');
+  }
+
   changeLimitBtn(lim:string) {
     return this.page.locator('label', { hasText: lim });
   }

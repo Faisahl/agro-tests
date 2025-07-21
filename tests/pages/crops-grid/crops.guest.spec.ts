@@ -1,7 +1,7 @@
 import test, { expect } from "@playwright/test";
 import { CropsGridPage } from "../../../pages/crops.page";
 
-test('track crop as guest', async ({ page }) => {
+test('tc_01 - track crop as guest', async ({ page }) => {
   const grid = new CropsGridPage(page);
   await grid.goto('karachi');
 
@@ -9,7 +9,7 @@ test('track crop as guest', async ({ page }) => {
   await expect(grid.loginModal).toBeVisible();
 });
 
-test('use grid card name to navigate to crop view page', async ({ page }) => {
+test('tc_02 - use grid card name to navigate to crop view page', async ({ page }) => {
   const slct = 3;
   const grid = new CropsGridPage(page);
   await grid.goto('karachi');

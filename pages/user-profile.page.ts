@@ -8,15 +8,7 @@ export class UserProfilePage {
 
   get username(): Locator {
     return this.page.getByTestId('user-greeting');
-  }
-
-  getUCItem(str:string) {
-    return this.page.locator('.uc-item').getByText(str);
-  }
-  
-  getUCWidget(str:string): Locator {
-    return this.page.locator('.uc-widget').getByText(str);
-  }
+  } 
   
   get getUCWidgets(): ()=>Promise<Locator[]> {
     return this.page.locator('.uc-widget').all;
@@ -32,5 +24,13 @@ export class UserProfilePage {
   
   async getUserCrops(): Promise<string[]> {
     return this.page.getByRole('option', { name: 'users-crops' }).allInnerTexts();
+  }
+
+  getUCItem(str:string) {
+    return this.page.locator('.uc-item').getByText(str);
+  }
+  
+  getUCWidget(str:string): Locator {
+    return this.page.locator('.uc-widget').getByText(str);
   }
 }

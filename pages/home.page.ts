@@ -1,23 +1,35 @@
-import { Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 
-const baseUrl:string = process.env.TEST_URL || 'http://127.0.0.1:3000';
+const baseUrl: string = process.env.TEST_URL || "http://127.0.0.1:3000";
 
 export class HomePage {
-  readonly page: Page;
-  readonly signInBtn;
-  readonly userIcon;
-
-  constructor(page: Page){
-    this.page = page;
-    this.signInBtn = page.getByRole('link', { name: 'Sign In' });
-    this.userIcon = page.getByTestId('user-icon');
-  }
+  constructor(readonly page: Page) {}
 
   async goto() {
     await this.page.goto(`${baseUrl}`);
   }
 
+  get signInBtn(): Locator {
+    return this.page.getByRole("link", { name: "Sign In" });
+  }
+
+  get userIcon(): Locator {
+    return this.page.getByTestId("user-icon");
+  }
+
+  get searchBar(): Locator {
+    return this.page.getByTestId('agro-search-bar')
+  }
+
+  get searchList(): Locator {
+    return this.page.getByLabel('agro-search-list');
+  }
+
+  get topPctChangeTable(): Locator {
+    return this.page.getByTestId('top-x-table');
+  }
+
   async gotoLogin() {
-    await this.signInBtn.click();
+    await this.page.getByRole("link", { name: "Sign In" }).click();
   }
 }

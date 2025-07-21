@@ -1,12 +1,12 @@
 import { test, expect } from "../../fixtures/e2e/goto-login";
 
 test.describe('valid login e2e tests', () => {
-  test('valid user login by email - tce_01', async ({ loginPage, page, navBar }) => {
+  test('tce_01 - login user with valid email credential', async ({ loginPage, page, navBar }) => {
     await loginPage.signInUser('admin@kashtdar.com','d8T2[W0[4c-a');
     await expect(navBar.userIconBtn).toBeVisible();
   });
   
-  test('valid user login by phone no. - tce_02', async ({ loginPage, page, navBar }) => {
+  test('tce_02 - login user with valid phone credential', async ({ loginPage, page, navBar }) => {
     await loginPage.selectRadio('phone');
     await loginPage.signInUser('3132134132','d8T2[W0[4c-a');
     await expect(navBar.userIconBtn).toBeVisible();
@@ -14,14 +14,14 @@ test.describe('valid login e2e tests', () => {
 });
 
 test.describe('invalid login e2e tests', () => {
-  test('invalid user login by email - tce_03', async ({ loginPage, page }) => {
-    await loginPage.signInUser('admin@krashtkar.com','d8T2[W0[4c-a');
+  test('tce_03 - show invalid email login error (wrong password)', async ({ loginPage, page }) => {
+    await loginPage.signInUser('admin@kashtdar.com','d8T2[W0[');
     await expect(loginPage.loginError).toBeVisible();
   });
   
-  test('invalid user login by phone no. - tce_04', async ({ loginPage, page }) => {
+  test('tce_04 - show invalid phone login error (wrong phone)', async ({ loginPage, page }) => {
     await loginPage.selectRadio('phone');
-    await loginPage.signInUser('3132134134','d8T2[W0[4c-a');
+    await loginPage.signInUser('3132190132','d8T2[W0[4c-a');
     await expect(loginPage.loginError).toBeVisible();
   });
 });

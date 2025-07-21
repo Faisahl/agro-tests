@@ -1,9 +1,6 @@
 import { test as should } from "@playwright/test";
 import { test, expect } from "../../../fixtures/e2e/goto-login";
-import { config } from "dotenv";
 import { validTestUser as user } from "../../../test-data/users";
-
-config();
 
 should.describe("@smoke - valid/invalid user sign in", () => {
   test("tc_01 - login user with valid email credential", async ({
@@ -29,8 +26,6 @@ should.describe("@smoke - valid/invalid user sign in", () => {
 
   test("tc_03 - show invalid email login error (wrong password)", async ({
     loginPage,
-    // page,
-    // navBar,
   }) => {
     await loginPage.signInUser(user.email, "wrongpass");
     await expect(loginPage.loginError).toBeVisible();
@@ -39,8 +34,6 @@ should.describe("@smoke - valid/invalid user sign in", () => {
 
 test("tc_04 - show invalid phone login error (wrong phone)", async ({
   loginPage,
-  // page,
-  // navBar,
 }) => {
   await loginPage.selectRadio("phone");
   await loginPage.signInUser("000010000", user.password);
